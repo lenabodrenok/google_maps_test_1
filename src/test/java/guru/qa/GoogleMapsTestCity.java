@@ -2,6 +2,8 @@ package guru.qa;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,6 +23,8 @@ public class GoogleMapsTestCity {
     @DisplayName("Testing Google Maps")
     @ParameterizedTest(name = "Checking the city search: {0}")
     void searchCityTest(String testData) {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         Selenide.open("https://www.google.com/maps");              //предусловие
         $("#searchboxinput").setValue(testData).pressEnter();             //шаги
         $$(".tAiQdd").find(Condition.text(testData)).shouldBe(visible);   //ожидаемый результат

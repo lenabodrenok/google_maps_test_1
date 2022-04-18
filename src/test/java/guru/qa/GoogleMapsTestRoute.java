@@ -2,6 +2,8 @@ package guru.qa;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,6 +23,8 @@ public class GoogleMapsTestRoute {
     @ParameterizedTest(name = "Checking the route {0} - {1}. Expected result: {2} route found")
 
     void searchRouteTest(String testDataOne, String testDataTwo, String expectedResult) {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         Selenide.open("https://www.google.com/maps/dir/");
         $("#directions-searchbox-0").$(".tactile-searchbox-input").setValue(testDataOne);
         $("#directions-searchbox-1").$(".tactile-searchbox-input").setValue(testDataTwo).pressEnter();
