@@ -13,14 +13,14 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 
-@DisplayName("Testing Google Maps")
+@DisplayName("Testing Google Maps - City.")
 public class GoogleMapsTestCity {
 
     @ValueSource(strings = {
             "Sydney",
             "Melbourne"
     })
-    @DisplayName("Testing Google Maps")
+    @DisplayName("Testing Google Maps - City.")
     @ParameterizedTest(name = "Checking the city search: {0}")
     void searchCityTest(String testData) {
         SelenideLogger.addListener("allure", new AllureSelenide());

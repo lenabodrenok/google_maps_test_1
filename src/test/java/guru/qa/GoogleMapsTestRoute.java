@@ -12,14 +12,14 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-@DisplayName("Testing Google Maps")
+@DisplayName("Testing Google Maps - Route.")
 public class GoogleMapsTestRoute {
 
     @CsvSource(value = {
             "Sydney, Melbourne, Transit",
             "Melbourne, Hobart, Flights"
     })
-    @DisplayName("Testing Google Maps")
+    @DisplayName("Testing Google Maps - Route.")
     @ParameterizedTest(name = "Checking the route {0} - {1}. Expected result: {2} route found")
 
     void searchRouteTest(String testDataOne, String testDataTwo, String expectedResult) {
