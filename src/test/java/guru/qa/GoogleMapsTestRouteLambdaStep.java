@@ -1,6 +1,7 @@
 package guru.qa;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
@@ -29,6 +30,7 @@ public class GoogleMapsTestRouteLambdaStep {
     @ParameterizedTest(name = "Checking the route {0} - {1}. Expected result: {2} route found")
     void searchRouteTest(String testDataOne, String testDataTwo, String expectedResult) {
         SelenideLogger.addListener("allure", new AllureSelenide());
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         step("Open Google Maps", () -> {
             open("https://www.google.com/maps/dir/");

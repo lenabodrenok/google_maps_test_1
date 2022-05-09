@@ -1,5 +1,6 @@
 package guru.qa;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import guru.qa.domain.MenuItem;
@@ -20,6 +21,7 @@ public class GoogleMapsTestEnum {
     @ParameterizedTest()
     void mapsMenuTest(MenuItem testData) {
         SelenideLogger.addListener("allure", new AllureSelenide());
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         step("Open Google Maps", () -> {
             Selenide.open("https://www.google.com/maps/dir/");
